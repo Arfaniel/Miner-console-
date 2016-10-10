@@ -10,13 +10,25 @@ namespace ConsoleApplication1.Classes
     {
         Field newGame;
         Player me;
+        int curX;
+        int curY;
+        public delegate void press();
+        public event press move;
+
         //события press, start, win, loose, boom
         public Game()
         {
+
             newGame = new Field();
             newGame.PlantBombs();
             newGame.setNums();
-            newGame.ShowHidden();
+            curX = 1;
+            curY = 1;
+            newGame.Show();
+        }
+        public void moveArrows()
+        {
+
         }
     }
 }

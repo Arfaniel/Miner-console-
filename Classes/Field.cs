@@ -130,7 +130,6 @@ namespace ConsoleApplication1.Classes
                     }
                 }
             }
-           
             return countBombs;
         }
         public void ShowHidden()
@@ -145,7 +144,18 @@ namespace ConsoleApplication1.Classes
                 Console.WriteLine();
             }
         }
-
+        public void Show()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    Console.Write("■");
+                }
+                Console.WriteLine();
+            }
+        }
+                    
 
 
     }
