@@ -18,7 +18,6 @@ namespace ConsoleApplication1.Classes
         //события press, start, win, loose, boom
         public Game()
         {
-
             newGame = new Field();
             newGame.PlantBombs();
             newGame.setNums();
