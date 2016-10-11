@@ -21,9 +21,9 @@ namespace ConsoleApplication1.Classes
             newGame = new Field();
             newGame.PlantBombs();
             newGame.setNums();
-            curX = 1;
-            curY = 1;
-            newGame.Show();
+            curX = 0;
+            curY = 0;
+            newGame.Show(curX, curY);
         }
         public void moveArrows()
         {

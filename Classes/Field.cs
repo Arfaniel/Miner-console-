@@ -144,19 +144,24 @@ namespace ConsoleApplication1.Classes
                 Console.WriteLine();
             }
         }
-        public void Show()
+        public void Show(int x, int y)
         {
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    Console.Write("■");
+                    if (i == x && j == y)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write('■');
+                        Console.ResetColor();
+                    }
+                    else
+                        Console.Write('■');
                 }
                 Console.WriteLine();
             }
         }
-                    
-
-
     }
 }
+                    
