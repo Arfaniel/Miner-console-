@@ -13,7 +13,7 @@ namespace ConsoleApplication1.Classes
         int curX;
         int curY;
         public delegate void press();
-        public event press move;
+        public event press button;
 
         //события press, start, win, loose, boom
         public Game()
@@ -27,6 +27,16 @@ namespace ConsoleApplication1.Classes
         }
         public void moveArrows()
         {
+            ConsoleKeyInfo a = new ConsoleKeyInfo();
+            a = Console.ReadKey();
+            if(a.Key == ConsoleKey.DownArrow && curY < 9)
+            {
+                curY++;
+            }
+            if (a.Key == ConsoleKey.UpArrow && curY > 0)
+            {
+                curY--;
+            }
 
         }
     }
