@@ -12,12 +12,8 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             Game play = new Game();
-            for(;;)
-            {
-                play.button;
-                Console.Clear();
-
-            }
+            play.moveArrows();
+            play.newGame.Show();
         }
     }
 }

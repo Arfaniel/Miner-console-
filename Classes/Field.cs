@@ -13,6 +13,8 @@ namespace ConsoleApplication1.Classes
         object[,] field;
         object[,] showField;
         int bombs;
+        public delegate void press(int x, int y);
+        public event press button;
         public Field()
         {
             field = new object[10, 10];

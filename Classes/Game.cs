@@ -8,10 +8,10 @@ namespace ConsoleApplication1.Classes
 {
     public class Game
     {
-        Field newGame;
+        public Field newGame;
         Player me;
-        int curX;
-        int curY;
+        public int curX;
+        public int curY;
         public delegate void press();
         public event press button;
 
@@ -32,12 +32,18 @@ namespace ConsoleApplication1.Classes
             if(a.Key == ConsoleKey.DownArrow && curY < 9)
             {
                 curY++;
+               
             }
             if (a.Key == ConsoleKey.UpArrow && curY > 0)
             {
                 curY--;
             }
 
+        }
+
+        private void NewGame_button(int x, int y)
+        {
+            throw new NotImplementedException();
         }
     }
 }
