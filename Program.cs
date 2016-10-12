@@ -12,8 +12,9 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             Game play = new Game();
-            play.moveArrows();
-            play.newGame.Show();
+            for(;;)
+                play.moveArrows();
+            
         }
     }
 }

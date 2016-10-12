@@ -12,8 +12,10 @@ namespace ConsoleApplication1.Classes
     {
         object[,] field;
         object[,] showField;
+        public int curX;
+        public int curY;
         int bombs;
-        public delegate void press(int x, int y);
+        public delegate void press();
         public event press button;
         public Field()
         {
@@ -27,7 +29,8 @@ namespace ConsoleApplication1.Classes
                 }
             }
             bombs = 20;
-
+            curX = 0;
+            curY = 0;
         }
         public Field(int a, int b)
         {
@@ -146,13 +149,14 @@ namespace ConsoleApplication1.Classes
                 Console.WriteLine();
             }
         }
-        public void Show(int x, int y)
+        public void Show()
         {
+            Console.Clear();
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    if (i == x && j == y)
+                    if (i == curX && j == curY)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write('■');
