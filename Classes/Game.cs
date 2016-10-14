@@ -10,23 +10,17 @@ namespace ConsoleApplication1.Classes
     public class Game
     {
         public Field newGame;
-        Player me;
-        public int curX;
-        public int curY;
-        //public delegate void press();
+        
         public event Field.press button;
-
         //события press, start, win, loose, boom
         public Game()
         {
             newGame = new Field();
             newGame.PlantBombs();
             newGame.setNums();
-            curX = 0;
-            curY = 0;
             newGame.Show();
         }
-        public void moveArrows()
+        public void readPress()
         {
             ConsoleKeyInfo a = new ConsoleKeyInfo();
             a = Console.ReadKey();
@@ -35,23 +29,39 @@ namespace ConsoleApplication1.Classes
                 newGame.curX++;
                 button += newGame.Show;
             }
-            if (a.Key == ConsoleKey.UpArrow && newGame.curX > 0)
+            if (a.Key == ConsoleKey.UpArrow && newGame.curX > 0 && newGame.curX <= 9)
             {
                 newGame.curX--;
                 button += newGame.Show;
             }
-            if(a.Key == ConsoleKey.LeftArrow && newGame.curY < 0)
+            if(a.Key == ConsoleKey.LeftArrow && newGame.curY <= 9 && newGame.curY > 0)
+            {
+                newGame.curY--;
+                button += newGame.Show;
+            }
+            if (a.Key == ConsoleKey.RightArrow && newGame.curY >= 0 && newGame.curY < 9)
             {
                 newGame.curY++;
                 button += newGame.Show;
             }
-            if (a.Key == ConsoleKey.RightArrow && newGame.curY >= 0)
+            if(a.Key == ConsoleKey.Enter)
             {
-                newGame.curY++;
+                newGame.openCell();
+                
                 button += newGame.Show;
             }
-            button();
+            if(a.Key == ConsoleKey.Spacebar)
+            {
+                newGame.setFlag();
+                button += newGame.Show;
+            }
+            if (button != null)
+                button();
         }
-
+        public void hitPlayer()
+        {
+            
+        }
+        
     }
 }

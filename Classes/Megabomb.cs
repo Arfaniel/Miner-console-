@@ -11,7 +11,12 @@ namespace ConsoleApplication1.Classes
     {
         public void Explode(Player x)
         {
-            throw new NotImplementedException();
+            if (x.lives > 0)
+            {
+                x.lives--;
+            }
+            else
+                x.lives = -1;
         }
         public override string ToString()
         {

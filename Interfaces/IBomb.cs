@@ -7,7 +7,7 @@ using ConsoleApplication1.Classes;
 
 namespace ConsoleApplication1.Interfaces
 {
-    interface IBomb
+    public interface IBomb
     {
         void Explode(Player x);
 

@@ -13,7 +13,7 @@ namespace ConsoleApplication1
         {
             Game play = new Game();
             for(;;)
-                play.moveArrows();
+                play.readPress();
             
         }
     }

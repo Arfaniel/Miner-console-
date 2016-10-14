@@ -8,8 +8,6 @@ namespace ConsoleApplication1.Classes
 {
     public class Bomb : IBomb
     {
-        int power;
-
         public void Explode(Player x)
         {
             if (x.lives > 0)

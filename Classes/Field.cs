@@ -10,48 +10,30 @@ namespace ConsoleApplication1.Classes
 {
     public class Field
     {
+        Player me;
         object[,] field;
         object[,] showField;
         public int curX;
         public int curY;
         int bombs;
         public delegate void press();
-        public event press button;
+        public delegate IBomb isBlast();
+       
         public Field()
         {
+            me = new Player();
             field = new object[10, 10];
             showField = new object[10, 10];
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    showField[i,j] = " ";
+                    showField[i,j] = '■';
                 }
             }
             bombs = 20;
             curX = 0;
             curY = 0;
-        }
-        public Field(int a, int b)
-        {
-            field = new object[a, b];
-            for (int i = 0; i < a; i++)
-            {
-                for (int j = 0; j < b; j++)
-                {
-                    field[i, j] = new object();
-                    field[i, j] = ' ';
-                }
-            }
-            showField = new object[10, 10];
-            for (int i = 0; i < a; i++)
-            {
-                for (int j = 0; j < b; j++)
-                {
-                    showField[i, j] = ' ';
-                }
-            }
-            bombs = 20;
         }
         public void PlantBombs()
         {
@@ -106,6 +88,19 @@ namespace ConsoleApplication1.Classes
                 return false;
             return true;
         }
+        public void openCell()
+        {
+            showField[curX, curY] = field[curX, curY];
+            if(field[curX, curY] is IBomb)
+            {
+                IBomb temp = (IBomb)field[curX, curY];
+                temp.Explode(me);
+            }
+        }
+        public void setFlag()
+        {
+            showField[curX, curY] = 'f';
+        }
         public void setNums()
         {
             for (int i = 0; i < 10; i++)
@@ -159,11 +154,11 @@ namespace ConsoleApplication1.Classes
                     if (i == curX && j == curY)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write('■');
+                        Console.Write(showField[i,j]);
                         Console.ResetColor();
                     }
                     else
-                        Console.Write('■');
+                        Console.Write(showField[i, j]);
                 }
                 Console.WriteLine();
             }

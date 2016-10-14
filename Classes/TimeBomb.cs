@@ -11,7 +11,7 @@ namespace ConsoleApplication1.Classes
     {
         public void Explode(Player x)
         {
-            throw new NotImplementedException();
+            x.time += 60;
         }
         public override string ToString()
         {
