@@ -12,6 +12,7 @@ namespace ConsoleApplication1.Classes
         public Field newGame;
         
         public event Field.press button;
+        public event Field.isOver GameOver;
         //события press, start, win, loose, boom
         public Game()
         {
@@ -57,10 +58,6 @@ namespace ConsoleApplication1.Classes
             }
             if (button != null)
                 button();
-        }
-        public void hitPlayer()
-        {
-            
         }
         
     }
