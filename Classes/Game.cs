@@ -10,13 +10,18 @@ namespace ConsoleApplication1.Classes
     public class Game
     {
         public Field newGame;
-        
-        public event Field.press button;
-        public event Field.isOver GameOver;
-        //события press, start, win, loose, boom
+
+        public delegate void press(ConsoleKeyInfo a);
+        public event press buttonPress;
+        public delegate void gameStatus();
+        public event gameStatus Win;
+        public event gameStatus Loose;
         public Game()
         {
             newGame = new Field();
+            buttonPress += newGame.moveOnGrid;
+            Loose += newGame.isLoose;
+            Win += newGame.isWin;
             newGame.PlantBombs();
             newGame.setNums();
             newGame.Show();
@@ -25,40 +30,23 @@ namespace ConsoleApplication1.Classes
         {
             ConsoleKeyInfo a = new ConsoleKeyInfo();
             a = Console.ReadKey();
-            if(a.Key == ConsoleKey.DownArrow && newGame.curX < 9)
+            do
             {
-                newGame.curX++;
-                button += newGame.Show;
-            }
-            if (a.Key == ConsoleKey.UpArrow && newGame.curX > 0 && newGame.curX <= 9)
-            {
-                newGame.curX--;
-                button += newGame.Show;
-            }
-            if(a.Key == ConsoleKey.LeftArrow && newGame.curY <= 9 && newGame.curY > 0)
-            {
-                newGame.curY--;
-                button += newGame.Show;
-            }
-            if (a.Key == ConsoleKey.RightArrow && newGame.curY >= 0 && newGame.curY < 9)
-            {
-                newGame.curY++;
-                button += newGame.Show;
-            }
-            if(a.Key == ConsoleKey.Enter)
-            {
-                newGame.openCell();
-                
-                button += newGame.Show;
-            }
-            if(a.Key == ConsoleKey.Spacebar)
-            {
-                newGame.setFlag();
-                button += newGame.Show;
-            }
-            if (button != null)
-                button();
+                newGame.Show();
+                buttonPress(Console.ReadKey());
+                if(newGame.me.lives <=0 || newGame.me.time >= 1000)
+                {
+                    Loose();
+                    break;
+                }
+                if(newGame.me.lives > 0 && newGame.isWinner() == true)
+                {
+                    Win();
+                    break;
+                }
+            } while (a.Key != ConsoleKey.Escape);
         }
+
         
     }
 }

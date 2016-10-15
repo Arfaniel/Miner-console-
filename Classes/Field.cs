@@ -10,7 +10,7 @@ namespace ConsoleApplication1.Classes
 {
     public class Field
     {
-        Player me;
+        public Player me;
         object[,] field;
         object[,] showField;
         public int curX;
@@ -35,7 +35,7 @@ namespace ConsoleApplication1.Classes
             curX = 0;
             curY = 0;
         }
-        public void PlantBombs()
+        public void PlantBombs() //расставляем бомбы
         {
             Random rand = new Random();
             int countRegular = 0;
@@ -82,13 +82,13 @@ namespace ConsoleApplication1.Classes
             } while (counterTime != 6);
 
         }
-        bool isBomb(int x, int y)
+        bool isBomb(int x, int y) //проверка на наличие бомбы по координате (для расстановки бомб)
         {
             if (field[x, y] is IBomb)
                 return false;
             return true;
         }
-        public void openCell()
+        public void openCell()//вскрытие ячейки
         {
             showField[curX, curY] = field[curX, curY];
             if(field[curX, curY] is IBomb)
@@ -97,11 +97,12 @@ namespace ConsoleApplication1.Classes
                 temp.Explode(me);
             }
         }
-        public void setFlag()
+
+        public void setFlag()//поместить флаг по ячейке
         {
             showField[curX, curY] = 'f';
         }
-        public void setNums()
+        public void setNums()//расстановка цифр в ячейки без бомб (для инициацлизации поля)
         {
             for (int i = 0; i < 10; i++)
             {
@@ -116,7 +117,7 @@ namespace ConsoleApplication1.Classes
                 }
             }
         }
-        private int bombCounter(int x,  int y)
+        private int bombCounter(int x,  int y) //просчитывает кол-во бомб в соседних ячейках (для проставления номера в ячейку)
         {
             int countBombs = 0;
             for (int i = x - 1; i <= x + 1; i++)
@@ -132,7 +133,7 @@ namespace ConsoleApplication1.Classes
             }
             return countBombs;
         }
-        public void ShowHidden()
+        public void ShowHidden() // показывает поле с бомбами и цифрами (для проверки)
         {
             for (int i = 0; i < 10; i++)
             {
@@ -144,7 +145,7 @@ namespace ConsoleApplication1.Classes
                 Console.WriteLine();
             }
         }
-        public void Show()
+        public void Show() //показывает игровое поле
         {
             Console.Clear();
             for (int i = 0; i < 10; i++)
@@ -162,6 +163,46 @@ namespace ConsoleApplication1.Classes
                 }
                 Console.WriteLine();
             }
+        }
+        public void moveOnGrid(ConsoleKeyInfo a) //двигаемся курсором по полю
+        {
+            if (a.Key == ConsoleKey.DownArrow && curX < 9)
+                curX++;
+            if (a.Key == ConsoleKey.UpArrow && curX > 0 && curX <= 9)
+                curX--;
+            if (a.Key == ConsoleKey.LeftArrow && curY <= 9 && curY > 0)
+                curY--;
+            if (a.Key == ConsoleKey.RightArrow && curY >= 0 && curY < 9)
+                curY++;
+            if (a.Key == ConsoleKey.Enter)
+                openCell();
+            if (a.Key == ConsoleKey.Spacebar)
+                setFlag();
+        }
+
+        public void isLoose()
+        {
+                Console.WriteLine("You loose");
+        }
+        public void isWin()
+        {
+                Console.WriteLine("You win");
+        }
+        public bool isWinner()
+        {
+            int countbombs = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    if (field[i, j] is IBomb)
+                        if (showField[i, j] == "f" || showField[i, j] == "M" || showField[i, j] == "b" || showField[i, j] == "T")
+                            countbombs++;
+                }
+            }
+            if (countbombs == 20)
+                return true;
+            return false;
         }
     }
 }

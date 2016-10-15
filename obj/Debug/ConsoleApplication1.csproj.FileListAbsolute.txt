@@ -16,3 +16,9 @@ C:\Users\kttsoft\Documents\Visual Studio 2015\Projects\Miner-console-\bin\Debug\
 C:\Users\kttsoft\Documents\Visual Studio 2015\Projects\Miner-console-\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
 C:\Users\kttsoft\Documents\Visual Studio 2015\Projects\Miner-console-\obj\Debug\ConsoleApplication1.exe
 C:\Users\kttsoft\Documents\Visual Studio 2015\Projects\Miner-console-\obj\Debug\ConsoleApplication1.pdb
+C:\Users\VIVI\Documents\Visual Studio 2015\Projects\Miner\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\VIVI\Documents\Visual Studio 2015\Projects\Miner\obj\Debug\ConsoleApplication1.exe
+C:\Users\VIVI\Documents\Visual Studio 2015\Projects\Miner\obj\Debug\ConsoleApplication1.pdb
+C:\Users\VIVI\Documents\Visual Studio 2015\Projects\Miner\bin\Debug\ConsoleApplication1.exe
+C:\Users\VIVI\Documents\Visual Studio 2015\Projects\Miner\bin\Debug\ConsoleApplication1.pdb
+C:\Users\VIVI\Documents\Visual Studio 2015\Projects\Miner\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
